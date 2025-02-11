@@ -53,11 +53,18 @@ h2 {
   font-size: 25px;
 }
 
+#player-feedback,
+.buttons {
+  flex-wrap: wrap;
+}
+
 #player-health {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+  padding: 0 50px;
+  border-radius: 25px;
 }
 
 .heart {
@@ -85,6 +92,7 @@ h2 {
 #board {
   width: 540px;
   height: 540px;
+  max-width: 540px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -92,6 +100,7 @@ h2 {
   background-color: var(--offblack);
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
   border: 3px solid var(--lightgreen);
+  padding-bottom: 60px;
 }
 
 #board div {
@@ -117,12 +126,9 @@ h2 {
 }
 
 #board div img {
-  /* width: 100px;
-        height: 100px; */
   width: 50%;
   max-width: 100px;
   height: 50%;
-  /* height: auto; */
   display: block;
   margin: auto;
   padding-bottom: 35%;
@@ -184,12 +190,11 @@ button:hover {
   #board {
     width: 90%;
     grid-template-columns: repeat(3, 1fr);
-    background-color: green;
   }
 
   #board div img {
-    width: 80px;
-    height: 80px;
+    width: 50%;
+    height: 50%;
   }
 
   .buttons {
@@ -213,7 +218,7 @@ button:hover {
   }
 
   #board div img {
-    width: 30%;
+    width: 40%;
     max-width: 60px;
   }
 
