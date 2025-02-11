@@ -13,6 +13,25 @@ window.onload = function () {
   startGame();
 };
 
+let sfx = {
+  cappyClick: new Howl({
+    src: ["assets/music/270303__littlerobotsoundfactory__collect_point_01.wav"],
+  }),
+  caimanClick: new Howl({
+    src: ["assets/music/350925__cabled_mess__hurt_c_08.wav"],
+  }),
+};
+
+let music = {
+  gameStart: new Howl({
+    src: ["assets/music/650965__betabeats__beat-tune-abysses.wav"],
+  }),
+
+  gameFinished: new Howl({
+    src: ["assets/music/569438__bloodpixelhero__the-end-point.wav"],
+  }),
+};
+
 function startGame() {
   createBoard();
   setupButtons();
@@ -64,10 +83,17 @@ function pauseGame() {
 }
 
 function setupButtons() {
-  document
-    .getElementById("play-button")
-    .addEventListener("click", startCountdown);
-  document.getElementById("pause-button").addEventListener("click", pauseGame);
+  document.getElementById("play-button").addEventListener("click", () => {
+    startCountdown();
+    if (!music.gameStart.playing()) {
+      music.gameStart.play();
+      music.gameStart.volume(0.5);
+    }
+  });
+  document.getElementById("pause-button").addEventListener("click", () => {
+    pauseGame();
+    music.gameStart.pause();
+  });
   document
     .getElementById("restart-button")
     .addEventListener("click", restartGame);
@@ -122,12 +148,15 @@ function selectTile() {
   }
 
   if (this === currCappyTile) {
+    sfx.cappyClick.play();
+    sfx.cappyClick.volume(0.7);
     playerPoints += 100;
     document.getElementById("points").innerText = playerPoints;
   } else if (this === currCaimanTile) {
     if (hearts > 0) {
       updateHealth(hearts - 1);
     }
+    sfx.caimanClick.play();
   }
 
   if (hearts === 0 || timer === 0) {
@@ -153,6 +182,11 @@ function updateHealth(remainingHearts) {
 
 function endGame() {
   gameOver = true;
+  music.gameStart.fade(0.5, 0.0, 3000);
+  if (!music.gameFinished.playing()) {
+    music.gameFinished.play();
+    music.gameFinished.fade(0.8, 0.0, 10000);
+  }
   pauseGame();
   document.getElementById("game-over-overlay").style.display = "block";
   document.getElementById("final-score").innerText = playerPoints;
