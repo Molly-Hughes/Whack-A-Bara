@@ -3,7 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Whack-A-Bara</title>
+    <meta
+      name="keywords"
+      content="whack-a-bara, whack-a-mole, whack-a-mole game"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Whack-A-Cappy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+20&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body></body>
+  <body>
+    <header id="header">
+      <h1>Whack-A-Bara</h1>
+    </header>
+
+    <h2 id="game-over-text"></h2>
+
+    <div id="player-feedback">
+      <div id="player-health">
+        <img class="heart" src="assets/heart.png" alt="heart" />
+        <img class="heart" src="assets/heart.png" alt="heart" />
+        <img class="heart" src="assets/heart.png" alt="heart" />
+        <h3>x <span id="remaining-hearts">3</span></h3>
+      </div>
+      <h3><span id="remaining-time">60</span> seconds</h3>
+    </div>
+
+    <div id="board"></div>
+
+    <div id="game-over-overlay">
+      <h2>GAME OVER!</h2>
+      <p>Final Score: <span id="final-score">0</span></p>
+      <button id="game-over-restart">Restart</button>
+    </div>
+
+    <div class="buttons">
+      <button id="play-button">Play</button>
+      <button id="pause-button">Pause</button>
+      <button id="restart-button">Restart</button>
+    </div>
+  </body>
 </html>
