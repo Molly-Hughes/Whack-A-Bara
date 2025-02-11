@@ -20,6 +20,11 @@ let sfx = {
   caimanClick: new Howl({
     src: ["assets/music/350925__cabled_mess__hurt_c_08.wav"],
   }),
+  lowTime: new Howl({
+    src: [
+      "assets/music/651011__therandomsoundbyte2637__final-countdown-timer.wav",
+    ],
+  }),
 };
 
 let music = {
@@ -61,6 +66,10 @@ function updateTimer() {
   if (timer > 0) {
     timer--;
     document.getElementById("remaining-time").innerText = timer;
+    if (timer <= 10) {
+      sfx.lowTime.play();
+      sfx.lowTime.volume(0.5);
+    }
   } else {
     endGame();
   }
@@ -149,7 +158,7 @@ function selectTile() {
 
   if (this === currCappyTile) {
     sfx.cappyClick.play();
-    sfx.cappyClick.volume(0.7);
+    sfx.cappyClick.volume(0.3);
     playerPoints += 100;
     document.getElementById("points").innerText = playerPoints;
   } else if (this === currCaimanTile) {
@@ -183,9 +192,11 @@ function updateHealth(remainingHearts) {
 function endGame() {
   gameOver = true;
   music.gameStart.fade(0.5, 0.0, 3000);
+
+  sfx.lowTime.fade(0.5, 0.0, 3000);
   if (!music.gameFinished.playing()) {
     music.gameFinished.play();
-    music.gameFinished.fade(0.8, 0.0, 10000);
+    music.gameFinished.fade(0.8, 0, 10000);
   }
   pauseGame();
   document.getElementById("game-over-overlay").style.display = "block";
