@@ -66,6 +66,14 @@ function updateTimer() {
   if (timer > 0) {
     timer--;
     document.getElementById("remaining-time").innerText = timer;
+
+    if (timer === 1) {
+      let secondsElement = document.getElementById("seconds");
+      secondsElement.innerText = "second";
+    } else {
+      let secondsElement = document.getElementById("seconds");
+      secondsElement.innerText = "seconds";
+    }
     if (timer <= 10) {
       sfx.lowTime.play();
       sfx.lowTime.volume(0.5);
