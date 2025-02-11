@@ -137,7 +137,7 @@ function setCappy() {
 
   currCappyTile = document.getElementById(num);
   let cappy = document.createElement("img");
-  cappy.src = "assets/capybara.png";
+  cappy.src = "assets/new-cappy.png";
   currCappyTile.appendChild(cappy);
 }
 
@@ -155,7 +155,7 @@ function setCaiman() {
 
   currCaimanTile = document.getElementById(num);
   let caiman = document.createElement("img");
-  caiman.src = "assets/caiman.png";
+  caiman.src = "assets/new-caiman.png";
   currCaimanTile.appendChild(caiman);
 }
 
