@@ -201,10 +201,11 @@ function endGame() {
   gameOver = true;
   music.gameStart.fade(0.5, 0.0, 3000);
 
-  sfx.lowTime.fade(0.5, 0.0, 3000);
+  sfx.lowTime.fade(0.2, 0.5, 10000);
   if (!music.gameFinished.playing()) {
     music.gameFinished.play();
     music.gameFinished.fade(0.8, 0, 10000);
+    sfx.lowTime.pause();
   }
   pauseGame();
   document.getElementById("game-over-overlay").style.display = "block";
